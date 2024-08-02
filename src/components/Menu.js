@@ -14,7 +14,7 @@ function Section({ heading, items }) {
     );
 }
 
-function Menu() {
+export const Menu = ()=> {
     const sections = [
         {
             heading: 'section 0',
@@ -26,6 +26,14 @@ function Menu() {
         },
         {
             heading: 'section 1',
+            items: [
+                'content 0',
+                'content 1',
+                'content 2',
+            ]
+        },
+        {
+            heading: 'section 2',
             items: [
                 'content 0',
                 'content 1',
@@ -57,5 +65,3 @@ function Menu() {
         </menu>
     );
 }
-
-export default Menu;
