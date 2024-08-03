@@ -4,7 +4,7 @@ import { Memorial } from './Memorial'
 
 export const Home = () => {
   return (
-    <div className='flex'>
+    <div className='flex' id='home'>
         <LeftSideBar/>
         <Memorial/>
     </div>

@@ -1,0 +1,50 @@
+menu {
+    min-width: 200px;
+    background-color: #1a1d27;
+    display: grid;
+    grid-template-rows: minmax(60px, auto) 1fr auto;
+    text-align: left;
+    height: 100svh;
+}
+
+menu header {
+    font-size: 13px;
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #3b3e47;
+    padding: 10px;
+    color: #e7e9f1;
+}
+
+menu #section-wrapper {
+    text-transform: capitalize;
+    padding: 10px;
+}
+
+#section-wrapper section {
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+menu section .title {
+    margin-bottom: 4px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #878a97;
+}
+
+menu ul {
+    /* border: 1px solid white; */
+}
+
+menu ul li {
+    padding: 8px 10px;
+    cursor: pointer;
+    color: #e7e9f1
+}
+
+menu ul li.active,
+menu ul li:hover {
+    background-color: #111522;
+}
