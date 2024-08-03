@@ -2,7 +2,7 @@ import React from 'react'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { Home } from './Home'
 import { Memorial } from './Memorial'
-import { AddWorrier } from './AddWorrier'
+import { AddWarrior } from './AddWarrior'
 
 export const Body = () => {
     const appRouter = createBrowserRouter([
@@ -15,8 +15,8 @@ export const Body = () => {
                     element:<Memorial/>
                 },
                 {
-                    path:"/addworrier",
-                    element:<AddWorrier/>
+                    path:"/addwarrior",
+                    element:<AddWarrior/>
                 }
             ]
         },
