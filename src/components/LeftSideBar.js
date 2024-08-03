@@ -14,7 +14,7 @@ function Section({ heading, items }) {
     </section>
   );
 }
-export const LeftSideBar = () => {
+export const LeftSideBar = (props) => {
   const sections = [
     {
       heading: 'Post-Independence',
@@ -43,27 +43,53 @@ export const LeftSideBar = () => {
   ];
 
   return (
-    <div className='w-[23%] hidden md:block' >
-      <menu className='hidden md:block'>
+    <>
+      {props.isSideBar ? (
+        <div className='w-[70%] overflow-hidden z-20 absolute md:w-[23%] md:relative' >
+          <menu>
             <header>
-                <div>
-                    <h3>War Memorial</h3>
-                    <p>Our India</p>
-                </div>
-                <div className="img-box"></div>
+              <div>
+                <h3>War Memorial</h3>
+                <p>Our India</p>
+              </div>
+              <div className="img-box"></div>
             </header>
             <div id='section-wrapper'>
-                {
-                    sections.map(({ heading, items }, i) => {
-                        return <Section
-                            heading={heading}
-                            items={items}
-                            key={i}
-                        />
-                    })
-                }
+              {
+                sections.map(({ heading, items }, i) => {
+                  return <Section 
+                    heading={heading}
+                    items={items}
+                    key={i}
+                  />
+                })
+              }
             </div>
+          </menu>
+        </div>
+      ) : (
+      <div className='hidden overflow-y z-10 md:w-[23%] md:block' >
+        <menu>
+          <header>
+            <div>
+              <h3>War Memorial</h3>
+              <p>Our India</p>
+            </div>
+            <div className="img-box"></div>
+          </header>
+          <div id='section-wrapper'>
+            {
+              sections.map(({ heading, items }, i) => {
+                return <Section
+                  heading={heading}
+                  items={items}
+                  key={i}
+                />
+              })
+            }
+          </div>
         </menu>
-    </div>
+      </div>)}
+    </>
   )
 }
