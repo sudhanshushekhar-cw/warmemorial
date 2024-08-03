@@ -1,26 +1,50 @@
 menu {
     min-width: 200px;
-    background-color: #1a1d27;
+    background-color: #111827;
     display: grid;
     grid-template-rows: minmax(60px, auto) 1fr auto;
     text-align: left;
     height: 100svh;
 }
 
+menu header h3{
+    font-weight: 600;
+    font-size: 14px;
+}
+menu header p{
+    font-weight: 400;
+    font-size: 12px;
+}
 menu header {
-    font-size: 13px;
     justify-content: space-between;
     display: flex;
     align-items: center;
     border-bottom: 1px solid #3b3e47;
     padding: 10px;
-    color: #e7e9f1;
+    color: #d1d5db;
 }
 
-menu #section-wrapper {
+/* Webkit Browsers (Chrome, Safari) */
+#section-wrapper {
     text-transform: capitalize;
     padding: 10px;
+    overflow-y: auto; 
 }
+
+#section-wrapper::-webkit-scrollbar-thumb{
+    background-color: transparent;
+    transition: background-color 0.3s ease-in-out;
+}
+#section-wrapper:hover::-webkit-scrollbar-thumb{
+    background-color: #3b3e47;
+}
+#section-wrapper::-webkit-scrollbar{
+    width: 10px;
+    background-color: transparent;
+}
+
+
+
 
 #section-wrapper section {
     margin-bottom: 20px;
@@ -31,7 +55,7 @@ menu section .title {
     margin-bottom: 4px;
     font-size: 14px;
     font-weight: 600;
-    color: #878a97;
+    color: #9ca3af;
 }
 
 menu ul {
@@ -40,11 +64,12 @@ menu ul {
 
 menu ul li {
     padding: 8px 10px;
+    border-radius: 8px;
     cursor: pointer;
-    color: #e7e9f1
+    color: #d1d5db
 }
 
 menu ul li.active,
 menu ul li:hover {
-    background-color: #111522;
+    background-color: #1f2937;
 }
