@@ -23,7 +23,7 @@ function Section({ heading, items }) {
 
 const GetSideBar = () => {
   const [data, setData] = useState([]);
-
+  
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -40,51 +40,40 @@ const GetSideBar = () => {
 
   return (
     <>
-      {data.map((war_cat) => (
-        <Section
-          key={war_cat.war_category_id}
-          heading={war_cat.name}
-          items={war_cat.wars}
-        />
-      ))}
+      {
+        data.map((war_cat) => (
+          <Section
+            key={war_cat.war_category_id}
+            heading={war_cat.name}
+            items={war_cat.wars}
+          />
+        ))
+      }
     </>
   );
 };
 
-export const LeftSideBar = (props) => {
+export const LeftSideBar = ({ isSideBar }) => {
+  const classes = isSideBar ?
+    'w-[70%] z-20 absolute md:w-[23%] md:relative' :
+    'hidden z-10 md:w-[23%] md:block'
+
   return (
     <>
-      {props.isSideBar ? (
-        <div className='w-[70%] z-20 absolute md:w-[23%] md:relative'>
-          <menu>
-            <header>
-              <div>
-                <h3>War Memorial</h3>
-                <p>Our India</p>
-              </div>
-              <div className="img-box"></div>
-            </header>
-            <div id='section-wrapper' className='overflow-y-auto removeScrollBar'>
-              <GetSideBar />
+      <div className={classes}>
+        <menu>
+          <header>
+            <div>
+              <h3>War Memorial</h3>
+              <p>Our India</p>
             </div>
-          </menu>
-        </div>
-      ) : (
-        <div className='hidden z-10 md:w-[23%] md:block'>
-          <menu>
-            <header>
-              <div>
-                <h3>War Memorial</h3>
-                <p>Our India</p>
-              </div>
-              <div className="img-box"></div>
-            </header>
-            <div id='section-wrapper' className='overflow-y-auto removeScrollBar'>
-              <GetSideBar />
-            </div>
-          </menu>
-        </div>
-      )}
+            <div className="img-box"></div>
+          </header>
+          <div id='section-wrapper' className='overflow-y-auto removeScrollBar'>
+            <GetSideBar />
+          </div>
+        </menu>
+      </div>
     </>
   );
 };

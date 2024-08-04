@@ -14,9 +14,8 @@ export const Memorial = (props) => {
             try {
                 // Correct URL construction for POST request
                 const response = await axios.post(GET_WARRIOR_BY_WARID, { war_id });
-                const result = response.data;
-                setData(result); // Update state with fetched data
-             
+                // Update state with fetched data
+                setData(response.data);
             } catch (error) {
                 console.log(error);
             }
@@ -25,7 +24,6 @@ export const Memorial = (props) => {
         fetchData();
     }, [war_id]); // Dependency array to refetch data if war_id changes
 
-    console.log(data);
     return (
         <div className="container" id='memorial'>
             {/* Optional: Uncomment and adjust based on your design */}
