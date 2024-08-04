@@ -1,51 +1,61 @@
-import React from 'react'
-import '../css/LeftSideBar.css'
+import React, { useState, useEffect } from 'react';
+import '../css/LeftSideBar.css';
+import { GET_SIDE_NAV_BAR } from "../api/api_list";
+import { Link } from 'react-router-dom';
+import axios from 'axios';
+
 function Section({ heading, items }) {
   return (
     <section>
       <h4 className="title">{heading}</h4>
       <ul>
-        {
-          items.map((item) => {
-            return <li key={item}>{item}</li>
-          })
-        }
+        {items.map((item, index) => (
+          <Link to={`/details/${item.war_id}`}>
+            <li key={index}>
+              {item.war_name}
+            </li>
+          </Link>
+        ))}
       </ul>
     </section>
   );
 }
-export const LeftSideBar = (props) => {
-  const sections = [
-    {
-      heading: 'Post-Independence',
-      items: [
-        'Indo-Pakistani War of 1947-1948',
-        'Indo-Pakistani War of 1965 ',
-        'Indo-Pakistani War of 1971',
-        'Sino-Indian War (1962)',
-        'Kargil War (1999)'
-      ]
-    },
-    {
-      heading: 'section 1',
-      items: [
-        'content 0',
 
-      ]
-    },
-    {
-      heading: 'section 2',
-      items: [
-        'content 0',
+const GetSideBar = () => {
+  const [data, setData] = useState([]);
 
-      ]
-    },
-  ];
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(GET_SIDE_NAV_BAR);
+        const result = response.data;
+        setData(result);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   return (
     <>
+      {data.map((war_cat) => (
+        <Section
+          key={war_cat.war_category_id}
+          heading={war_cat.name}
+          items={war_cat.wars}
+        />
+      ))}
+    </>
+  );
+};
+
+export const LeftSideBar = (props) => {
+  return (
+    <>
       {props.isSideBar ? (
-        <div className='w-[70%] overflow-hidden z-20 absolute md:w-[23%] md:relative' >
+        <div className='w-[70%] z-20 absolute md:w-[23%] md:relative'>
           <menu>
             <header>
               <div>
@@ -54,42 +64,27 @@ export const LeftSideBar = (props) => {
               </div>
               <div className="img-box"></div>
             </header>
-            <div id='section-wrapper'>
-              {
-                sections.map(({ heading, items }, i) => {
-                  return <Section 
-                    heading={heading}
-                    items={items}
-                    key={i}
-                  />
-                })
-              }
+            <div id='section-wrapper' className='overflow-y-auto removeScrollBar'>
+              <GetSideBar />
             </div>
           </menu>
         </div>
       ) : (
-      <div className='hidden overflow-y z-10 md:w-[23%] md:block' >
-        <menu>
-          <header>
-            <div>
-              <h3>War Memorial</h3>
-              <p>Our India</p>
+        <div className='hidden z-10 md:w-[23%] md:block'>
+          <menu>
+            <header>
+              <div>
+                <h3>War Memorial</h3>
+                <p>Our India</p>
+              </div>
+              <div className="img-box"></div>
+            </header>
+            <div id='section-wrapper' className='overflow-y-auto removeScrollBar'>
+              <GetSideBar />
             </div>
-            <div className="img-box"></div>
-          </header>
-          <div id='section-wrapper'>
-            {
-              sections.map(({ heading, items }, i) => {
-                return <Section
-                  heading={heading}
-                  items={items}
-                  key={i}
-                />
-              })
-            }
-          </div>
-        </menu>
-      </div>)}
+          </menu>
+        </div>
+      )}
     </>
-  )
-}
+  );
+};

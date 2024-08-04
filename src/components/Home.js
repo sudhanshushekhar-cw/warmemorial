@@ -10,7 +10,7 @@ export const Home = () => {
     setSideBar(!isSideBar);
   }
   return (
-    <div className='flex' id='home'>
+    <div className='flex h-[100vh] overflow-hidden' id='home'>
       <LeftSideBar isSideBar={isSideBar} toggelSideBarHandler={toggelSideBarHandler} />
       <div className='flex flex-col w-[100%]'>
         <Header toggelSideBarHandler={toggelSideBarHandler} />

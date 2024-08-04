@@ -15,14 +15,18 @@ export const Body = () => {
                     element:<Memorial/>
                 },
                 {
+                    path: "/details/:war_id",
+                    element: <Memorial/>
+                },
+                {
                     path:"/addwarrior",
                     element:<AddWarrior/>
                 }
             ]
-        },
+        }
         // {
-        //     path: "/login",
-        //     element: <Login/>
+        //     path: "/details/:war_id",
+        //     element: <Memorial/>
         // }
     ])
   return (
