@@ -2,7 +2,8 @@ import React from 'react'
 
 function Blogs() {
   return (
-    <div>Blogs</div>
+    // gona this route in future
+    <div>Your Blog Page here</div>
   )
 }
 

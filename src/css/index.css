@@ -28,11 +28,15 @@ body {
     position: relative;
 }
 
+
 main {
     display: grid;
     grid-template-rows: 60px 1fr;
     gap: 10px;
     height: 100svh;
+}
+main > *{
+    padding: 10px;
 }
 
 main header {
@@ -132,32 +136,20 @@ main #bricks::-webkit-scrollbar {
     text-overflow: ellipsis;
 }
 
-.hamburger{
-    font-size: 26px;
-    cursor: pointer;
-    display: none;
+#form{
+    overflow-y: scroll;
 }
-.backdrop{
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.7);
-    backdrop-filter: blur(2px);
-    z-index: 10;
+#form > div{
+    max-width: 600px;
 }
-.backdrop.active{
-    display: block;
-}
+
 
 @media screen and (max-width: 600px) {
     .grid-container {
         grid-template-columns: 1fr;
     }
     .hamburger{
-        display: inline-block;
+        display: inline-block !important;
     }
     menu {
         position: absolute;
