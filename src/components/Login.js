@@ -3,6 +3,7 @@ import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import { auth } from '../Firebase/firebaseConfig';
 import axios from 'axios';
 import { USER_REGISTER_LOGIN } from "../api/api_list";
+import GoogleButton from 'react-google-button';
 
 const Login = () => {
 
@@ -21,25 +22,29 @@ const Login = () => {
                 photoURL: user.photoURL
             };
 
-            // Send user information to your personal server
-            await axios.post(USER_REGISTER_LOGIN, userInfo);
-
-            console.log(userInfo); // Log the filtered user information
-            // Optionally, you can redirect to another page or perform further actions here
+            try {
+                // Send user information to your personal server
+                const response = await axios.post(USER_REGISTER_LOGIN, userInfo);
+                console.log(response);
+                
+                // Optionally redirect or show user feedback
+                // e.g., window.location.href = '/home';
+            } catch (error) {
+                console.error('Error sending user info to server:', error);
+                // Handle error, show user notification, etc.
+            }
         } catch (error) {
-            console.error(error);
+            console.error('Error signing in with Google:', error);
             // Handle error, show alert, etc.
         }
     }
 
     return (
         <div className="flex justify-center items-center h-screen">
-            <button 
-                className="mt-8 px-6 py-3 bg-blue-500 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75"
+            <GoogleButton
+                label='Continue with Google'
                 onClick={signin}
-            >
-                Sign In with Google
-            </button>
+            />
         </div>
     );
 }
