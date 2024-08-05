@@ -35,7 +35,8 @@ main {
     gap: 10px;
     height: 100svh;
 }
-main > *{
+
+main>* {
     padding: 10px;
 }
 
@@ -65,27 +66,40 @@ main header .events a:hover {
     color: #e7e9f1;
 }
 
-main #bricks {
+/* Brick Css Start */
+
+
+
+#memorial {
+    height: 88vh;
+    overflow: hidden;
+}
+
+#bricks {
     display: grid;
+    grid-auto-rows: 59px;
     grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
     gap: 10px;
     background-color: #1a1d27;
-    padding: 10px;
+    padding: 5px;
     overflow-y: scroll;
+    height: 90vh;
+    padding-bottom: 20px;
+    box-sizing: border-box;
 }
 
-main #bricks::-webkit-scrollbar {
+#bricks::-webkit-scrollbar {
     display: none;
 }
 
 .brick {
-    white-space: nowrap;
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 10px;
     background-color: #9a2001;
     position: relative;
-    border-radius: 12px;
+    border-radius: 10px;
     box-shadow: inset 0px 5px 10px #ff9316,
         inset 0px -5px 10px #420703;
     filter: brightness(80%);
@@ -94,15 +108,10 @@ main #bricks::-webkit-scrollbar {
     padding: 20px;
     color: #d5a963;
     cursor: pointer;
-    text-transform: capitalize;
-    filter: grayscale(0.3);
-}
 
-.brick.add-warrior:hover,
-.brick.add-warrior {
-    filter: grayscale(1);
-    justify-content: center;
-    font-weight: 600;
+    color: #ffba4a;
+    text-shadow: 0px 0px 2px #ff9316;
+    filter: brightness(100%);
 }
 
 .brick::before {
@@ -116,15 +125,52 @@ main #bricks::-webkit-scrollbar {
     z-index: -1;
 }
 
-.brick.active,
-.brick:hover {
-    color: #ffba4a;
+.brick:not(.add-warrior).active,
+.brick:not(.add-warrior):hover {
+    z-index: 1;
+    position: relative;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    /* color: #ffba4a;
     text-shadow: 0px 0px 2px #ff9316;
-    filter: brightness(100%);
+    filter: brightness(100%); */
+    transform: rotateY(180deg);
+
+    .icon {
+        display: none;
+    }
+
+    .sahid-name {
+        display: none;
+    }
+
+    .sahid-img {
+        display: inline;
+
+    }
+
+    .sahid-img::before {
+        display: inline;
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url('../../public/assets/frame.png');
+        background-size: cover;
+        /* Adjust as needed */
+        background-position: center;
+        /* Adjust as needed */
+        opacity: 0.5;
+        /* Adjust the opacity as needed */
+        z-index: -1;
+        /* Ensure the pseudo-element is behind the content */
+    }
 }
 
 .brick:hover .icon {
-    filter: grayscale(0.3) brightness(100%);
+    filter: grayscale(0) brightness(100%);
 }
 
 .brick .icon {
@@ -135,12 +181,18 @@ main #bricks::-webkit-scrollbar {
     overflow: hidden;
     text-overflow: ellipsis;
 }
+.brick.add-warrior{
+    filter: grayscale(1);
+}
 
-#form{
+/* Brick Css End */
+
+#form {
     overflow-y: scroll;
 }
-#form > div{
-    max-width: 600px;
+
+#form>div {
+    max-width: 520px;
 }
 
 
@@ -148,9 +200,11 @@ main #bricks::-webkit-scrollbar {
     .grid-container {
         grid-template-columns: 1fr;
     }
-    .hamburger{
+
+    .hamburger {
         display: inline-block !important;
     }
+
     menu {
         position: absolute;
         width: 280px;
@@ -159,12 +213,12 @@ main #bricks::-webkit-scrollbar {
         z-index: 101;
         transition: .3s;
     }
-    menu.active{
+
+    menu.active {
         left: 0;
     }
+
     main header .events a {
         padding: 8px;
     }
 }
-
-

@@ -21,6 +21,9 @@ export const Bricks = () => {
                 <img src='./assets/wreath.png'></img>
               </span>
               <span className='sahid-name'>{name}</span>
+              <div className='sahid-img hidden'>
+                <img className='sahid-img hidden' src='http://localhost:3000/assets/1.jpg' alt="Sahid" height={"100%"} width={'100%'} />
+              </div>
             </div>
           );
         })

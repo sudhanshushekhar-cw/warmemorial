@@ -1,21 +1,28 @@
 import React, { useState } from 'react';
-import PersonalInfo from './PersonalInfo';
+import PersonalInfo from './OfficerInfo';
 import AccountInfo from './AccountInfo'
 import Confirmation from './Confirmation'
-
+import ServiceInfo from './SeriveInfo';
+import Tribute from './Tribute';
 
 
 const MultiStepForm = () => {
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({
-    name: '',
-    placeOfBirth: '',
-    placeOfDeath: '',
-    rank: '',
-    branch: '',
-    serviceNumber: '',
-    username: '',
-    password: '',
+    officerInfo: {
+      fullName: '',
+      placeOfBirth: '',
+      PlaceOfDeath: '',
+    },
+    serviceInfo: {
+      branch: '',
+      number: '',
+      rank: '',
+    },
+    tribute: {
+      bio: '',
+      profilePhoto: '',
+    }
   });
 
   const handleInputChange = (e) => {
@@ -38,21 +45,40 @@ const MultiStepForm = () => {
           <PersonalInfo
             formData={formData}
             handleInputChange={handleInputChange}
-            setStep={setStep} />
+            setStep={setStep}
+          />
         }
 
         {
-          step === 2 && <AccountInfo
+          step === 2 && <ServiceInfo
             formData={formData}
             handleInputChange={handleInputChange}
-            setStep={setStep} />
+            setStep={setStep}
+          />
         }
-  
+
         {
-          step === 3 && <Confirmation
+          step === 3 && <Tribute
+            formData={formData}
+            handleInputChange={handleInputChange}
+            setStep={setStep}
+          />
+        }
+
+        {
+          step === 4 && <AccountInfo
+            formData={formData}
+            handleInputChange={handleInputChange}
+            setStep={setStep}
+          />
+        }
+
+        {
+          step === 5 && <Confirmation
             formData={formData}
             setStep={setStep}
-            handleSubmit={handleSubmit} />
+            handleSubmit={handleSubmit}
+          />
         }
       </div>
     </section>

@@ -22,7 +22,7 @@ const Confirmation = ({ formData, setStep, handleSubmit }) => {
                     className="rounded-full bg-blue-600 px-8 py-2 h-12 text-sm font-semibold text-white hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 w-full"
                     onClick={handleSubmit}
                 >
-                    Submit
+                    Add Worrior
                 </button>
             </div>
         </div>

@@ -2,7 +2,7 @@
 const AccountInfo = ({ formData, handleInputChange, setStep }) => {
     return (
         <div>
-            <h2 className="text-lg font-medium text-gray-300">Step 2: Account Information</h2>
+            <h2 className="text-lg font-medium text-gray-300">Step 3: Account Information</h2>
             <div className="space-y-2 mt-12">
                 <label htmlFor="username" className="block text-sm text-gray-400">Username</label>
                 <input
