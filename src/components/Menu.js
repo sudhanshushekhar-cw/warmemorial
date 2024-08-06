@@ -11,19 +11,28 @@ export const Menu = ({ active, setActive }) => {
     const [apiData, setApiData] = useState([]);
     const dummyData = [
         {
-            heading: 'section',
-            items: ['item1', 'item2', 'item3'],
-            war_id: -1,
+            heading: 'section 1',
+            items: [
+                { war_id: -1, war_name: 'war 1' },
+                { war_id: -2, war_name: 'war 2' },
+                { war_id: -3, war_name: 'war 3' },
+            ],
         },
         {
-            heading: 'section',
-            items: ['item1', 'item2', 'item3'],
-            war_id: -2,
+            heading: 'section 2',
+            items: [
+                { war_id: -1, war_name: 'war 1' },
+                { war_id: -2, war_name: 'war 2' },
+                { war_id: -3, war_name: 'war 3' },
+            ],
         },
         {
-            heading: 'section',
-            items: ['item1', 'item2', 'item3'],
-            war_id: -3,
+            heading: 'section 3',
+            items: [
+                { war_id: -1, war_name: 'war 1' },
+                { war_id: -2, war_name: 'war 2' },
+                { war_id: -3, war_name: 'war 3' },
+            ],
         },
     ];
     useEffect(() => {
@@ -33,8 +42,8 @@ export const Menu = ({ active, setActive }) => {
                 response.data.forEach(element => {
                     processData.push({
                         heading: element.name,
-                        items: element.wars.map(({war_name, war_id}) =>{ 
-                            return {war_name, war_id};
+                        items: element.wars.map(({ war_name, war_id }) => {
+                            return { war_name, war_id };
                         })
                     })
                 });
@@ -44,6 +53,7 @@ export const Menu = ({ active, setActive }) => {
                 setApiData(dummyData);
             })
     }, []);
+
     return (
         <menu className={active ? 'active' : ''}>
             <header>

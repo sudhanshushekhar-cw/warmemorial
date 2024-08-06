@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 
 function MenuSection({ heading, items, setActive }) {
+    console.log(items);
     return (
         <section>
             <h4 className="title">{heading}</h4>

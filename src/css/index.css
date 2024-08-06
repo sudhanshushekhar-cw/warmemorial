@@ -199,7 +199,22 @@ main header .events a:hover {
 }
 
 
+.backdrop{
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(2px);
+    z-index: 10;
+}
+
 @media screen and (max-width: 600px) {
+    .backdrop.active{
+        display: block;
+    }
     .grid-container {
         grid-template-columns: 1fr;
     }
