@@ -21,7 +21,7 @@ body {
     width: 100vw;
     height: 100svh;
     display: grid;
-    grid-template-columns: minmax(180px, 200px) 1fr;
+    grid-template-columns: minmax(200px, 250px) 1fr;
     grid-gap: 10px;
     max-width: 1000px;
     margin: auto;
@@ -75,7 +75,7 @@ main header .events a:hover {
     overflow: hidden;
 }
 
-#bricks {
+#memorial {
     display: grid;
     grid-auto-rows: 59px;
     grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
@@ -88,7 +88,7 @@ main header .events a:hover {
     box-sizing: border-box;
 }
 
-#bricks::-webkit-scrollbar {
+#memorial::-webkit-scrollbar {
     display: none;
 }
 
@@ -168,7 +168,9 @@ main header .events a:hover {
         /* Ensure the pseudo-element is behind the content */
     }
 }
-
+.brick.dummy{
+    filter: grayscale(0.6) brightness(60%);
+}
 .brick:hover .icon {
     filter: grayscale(0) brightness(100%);
 }
@@ -178,6 +180,7 @@ main header .events a:hover {
 }
 
 .brick .sahid-name {
+    white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }

@@ -1,60 +1,49 @@
 import { Link } from 'react-router-dom';
 import '../css/menu.css'
 import MenuSection from './MenuSection';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+import { GET_SIDE_NAV_BAR } from '../api/api_list';
+
 
 
 export const Menu = ({ active, setActive }) => {
-    const sections = [
+    const [apiData, setApiData] = useState([]);
+    const dummyData = [
         {
-            heading: 'section 0',
-            items: [
-                'hello world',
-                'then ',
-                'they have',
-            ]
+            heading: 'section',
+            items: ['item1', 'item2', 'item3'],
+            war_id: -1,
         },
         {
-            heading: 'section 1',
-            items: [
-                'content 0',
-                'content 1',
-                'content 2',
-            ]
+            heading: 'section',
+            items: ['item1', 'item2', 'item3'],
+            war_id: -2,
         },
         {
-            heading: 'section 2',
-            items: [
-                'content 0',
-                'content 1',
-                'content 2',
-            ]
-        },
-        {
-            heading: 'section 2',
-            items: [
-                'content 0',
-                'content 1',
-                'content 2',
-            ]
-        },
-        {
-            heading: 'section 2',
-            items: [
-                'content 0',
-                'content 1',
-                'content 2',
-            ]
-        },
-        {
-            heading: 'section 2',
-            items: [
-                'content 0',
-                'content 1',
-                'content 2',
-            ]
+            heading: 'section',
+            items: ['item1', 'item2', 'item3'],
+            war_id: -3,
         },
     ];
-
+    useEffect(() => {
+        axios.get(GET_SIDE_NAV_BAR)
+            .then(response => {
+                const processData = [];
+                response.data.forEach(element => {
+                    processData.push({
+                        heading: element.name,
+                        items: element.wars.map(({war_name, war_id}) =>{ 
+                            return {war_name, war_id};
+                        })
+                    })
+                });
+                setApiData(processData);
+            })
+            .catch(err => {
+                setApiData(dummyData);
+            })
+    }, []);
     return (
         <menu className={active ? 'active' : ''}>
             <header>
@@ -66,7 +55,7 @@ export const Menu = ({ active, setActive }) => {
             </header>
             <div id='section-wrapper'>
                 {
-                    sections.map(({ heading, items }, i) => {
+                    apiData.map(({ heading, items }, i) => {
                         return <MenuSection
                             heading={heading}
                             items={items}

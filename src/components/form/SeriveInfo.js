@@ -8,7 +8,7 @@ function ServiceInfo({ formData, handleInputChange, setStep }) {
                 <label htmlFor="branch" className="block text-sm text-gray-400">Branch of Service</label>
                 <select
                     id="branch"
-                    value={formData.serviceInfo.branch}
+                    value={formData.branch}
                     onChange={handleInputChange}
                     className="block w-full h-12 px-4 py-3 placeholder-gray-500 bg-gray-700 border-0 rounded-lg appearance-none text-gray-100 focus:border-blue-500 focus:bg-gray-800 focus:outline-none focus:ring-blue-500 focus:ring-inset focus:ring-2 text-xs"
                 >
@@ -24,7 +24,7 @@ function ServiceInfo({ formData, handleInputChange, setStep }) {
                 <input
                     type="text"
                     id="serviceNumber"
-                    value={formData.serviceInfo.number}
+                    value={formData.number}
                     onChange={handleInputChange}
                     className="block w-full h-12 px-4 py-3 placeholder-gray-500 bg-gray-700 border-0 rounded-lg appearance-none text-gray-100 focus:border-blue-500 focus:bg-gray-800 focus:outline-none focus:ring-blue-500 focus:ring-inset focus:ring-2 text-xs"
                     placeholder="Enter service number"
@@ -35,7 +35,7 @@ function ServiceInfo({ formData, handleInputChange, setStep }) {
                 <input
                     type="text"
                     id="rank"
-                    value={formData.serviceInfo.rank}
+                    value={formData.rank}
                     onChange={handleInputChange}
                     className="block w-full h-12 px-4 py-3 placeholder-gray-500 bg-gray-700 border-0 rounded-lg appearance-none text-gray-100 focus:border-blue-500 focus:bg-gray-800 focus:outline-none focus:ring-blue-500 focus:ring-inset focus:ring-2 text-xs"
                     placeholder="Enter rank"

@@ -9,7 +9,6 @@ const Confirmation = ({ formData, setStep, handleSubmit }) => {
                 <p><strong>Rank:</strong> {formData.rank}</p>
                 <p><strong>Branch of Service:</strong> {formData.branch}</p>
                 <p><strong>Service Number:</strong> {formData.serviceNumber}</p>
-                <p><strong>Username:</strong> {formData.username}</p>
             </div>
             <div className="mt-4 flex flex-wrap gap-2">
                 <button

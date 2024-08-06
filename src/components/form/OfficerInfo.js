@@ -8,7 +8,7 @@ const OfficerInfo = ({ formData, handleInputChange, setStep }) => {
                 <input
                     type="text"
                     id="name"
-                    value={formData.officerInfo.fullName}
+                    value={formData.name}
                     onChange={handleInputChange}
                     className="block w-full h-12 px-4 py-3 placeholder-gray-500 bg-gray-700 border-0 rounded-lg appearance-none text-gray-100 focus:border-blue-500 focus:bg-gray-800 focus:outline-none focus:ring-blue-500 focus:ring-inset focus:ring-2 text-xs"
                     placeholder="Enter full name"
@@ -20,7 +20,7 @@ const OfficerInfo = ({ formData, handleInputChange, setStep }) => {
                 <input
                     type="text"
                     id="placeOfBirth"
-                    value={formData.officerInfo.placeOfBirth}
+                    value={formData.placeOfBirth}
                     onChange={handleInputChange}
                     className="block w-full h-12 px-4 py-3 placeholder-gray-500 bg-gray-700 border-0 rounded-lg appearance-none text-gray-100 focus:border-blue-500 focus:bg-gray-800 focus:outline-none focus:ring-blue-500 focus:ring-inset focus:ring-2 text-xs"
                     placeholder="Enter place of birth"
@@ -31,7 +31,7 @@ const OfficerInfo = ({ formData, handleInputChange, setStep }) => {
                 <input
                     type="text"
                     id="placeOfDeath"
-                    value={formData.officerInfo.placeOfDeath}
+                    value={formData.placeOfDeath}
                     onChange={handleInputChange}
                     className="block w-full h-12 px-4 py-3 placeholder-gray-500 bg-gray-700 border-0 rounded-lg appearance-none text-gray-100 focus:border-blue-500 focus:bg-gray-800 focus:outline-none focus:ring-blue-500 focus:ring-inset focus:ring-2 text-xs"
                     placeholder="Enter place of death"

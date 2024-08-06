@@ -10,9 +10,9 @@ import { BrowserRouter, createBrowserRouter, createRoutesFromElements, Route, Ro
 
 // components
 import App from './App';
-import { Bricks } from './components/Bricks';
 import Blogs from './components/Blogs';
 import Wars from './components/Wars';
+import  Memorial, {loadMemorial } from './components/Memorial';
 
 
 // route handling
@@ -20,7 +20,12 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<App />}>
-      <Route path='' element={<Bricks />} />
+      <Route path='' element={<Memorial />} />
+      <Route
+        loader={loadMemorial}
+        path='/details/:war_id'
+        element={<Memorial />}
+      />
       <Route path='add-warrior' element={<Form />} />
       <Route path='wars' element={<Wars />} />
       <Route path='blogs' element={<Blogs />} />

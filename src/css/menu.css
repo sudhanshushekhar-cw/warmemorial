@@ -7,14 +7,16 @@ menu {
     height: 100svh;
 }
 
-menu header h3{
+menu header h3 {
     font-weight: 600;
     font-size: 14px;
 }
-menu header p{
+
+menu header p {
     font-weight: 400;
     font-size: 12px;
 }
+
 menu header {
     justify-content: space-between;
     display: flex;
@@ -28,17 +30,19 @@ menu header {
 #section-wrapper {
     text-transform: capitalize;
     padding: 10px;
-    overflow-y: auto; 
+    overflow-y: auto;
 }
 
-#section-wrapper::-webkit-scrollbar-thumb{
+#section-wrapper::-webkit-scrollbar-thumb {
     background-color: transparent;
     transition: background-color 0.3s ease-in-out;
 }
-#section-wrapper:hover::-webkit-scrollbar-thumb{
+
+#section-wrapper:hover::-webkit-scrollbar-thumb {
     background-color: #3b3e47;
 }
-#section-wrapper::-webkit-scrollbar{
+
+#section-wrapper::-webkit-scrollbar {
     width: 10px;
     background-color: transparent;
 }
@@ -63,10 +67,18 @@ menu ul {
 }
 
 menu ul li {
-    padding: 8px 10px;
     border-radius: 8px;
     cursor: pointer;
-    color: #d1d5db
+    overflow: hidden;
+}
+menu ul li a{
+    display: block;
+    padding: 8px 10px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    position: relative;
+    color: #d1d5db;
 }
 
 menu ul li.active,

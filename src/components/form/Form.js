@@ -9,24 +9,24 @@ import Tribute from './Tribute';
 const MultiStepForm = () => {
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({
-    officerInfo: {
-      fullName: '',
-      placeOfBirth: '',
-      PlaceOfDeath: '',
-    },
-    serviceInfo: {
-      branch: '',
-      number: '',
-      rank: '',
-    },
-    tribute: {
-      bio: '',
-      profilePhoto: '',
-    }
+    // officerInfo: 
+    name: '',
+    placeOfBirth: '',
+    placeOfDeath: '',
+
+    // serviceInfo:
+    branch: '',
+    serviceNumber: '',
+    rank: '',
+
+    // tribute: 
+    bio: '',
+    profilePhoto: '/assets/profile.svg',
   });
 
   const handleInputChange = (e) => {
     const { id, value } = e.target;
+    console.log(id, value);
     setFormData((prevData) => ({
       ...prevData,
       [id]: value,
@@ -39,7 +39,7 @@ const MultiStepForm = () => {
 
   return (
     <section className="bg-gray-900 text-gray-100 relative overflow-hidden" id='form'>
-      <div className='rounded-3xl bg-gray-800 shadow-2xl border border-gray-700 p-8 lg:p-10 sm:mx-6 md:mx-auto max-w-[450px]'>
+      <div className='rounded-3xl bg-gray-800 shadow-2xl border border-gray-700 p-8 lg:p-10 mx-auto max-w-[450px]'>
         {
           step === 1 &&
           <PersonalInfo
@@ -66,15 +66,7 @@ const MultiStepForm = () => {
         }
 
         {
-          step === 4 && <AccountInfo
-            formData={formData}
-            handleInputChange={handleInputChange}
-            setStep={setStep}
-          />
-        }
-
-        {
-          step === 5 && <Confirmation
+          step === 4 && <Confirmation
             formData={formData}
             setStep={setStep}
             handleSubmit={handleSubmit}

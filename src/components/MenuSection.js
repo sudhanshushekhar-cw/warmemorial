@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 function MenuSection({ heading, items, setActive }) {
     return (
@@ -6,11 +7,15 @@ function MenuSection({ heading, items, setActive }) {
             <h4 className="title">{heading}</h4>
             <ul>
                 {
-                    items.map((item) => {
-                        return <li
-                            key={item}
-                            onClick={() => setActive(false)}
-                        >{item}</li>
+                    items.map(({war_name, war_id}, i) => {
+                        return (
+                            <li
+                                key={i}
+                                onClick={() => setActive(false)}
+                            >
+                                <Link to={`details/${war_id}`}>{war_name}</Link>
+                            </li>
+                        )
                     })
                 }
             </ul>
