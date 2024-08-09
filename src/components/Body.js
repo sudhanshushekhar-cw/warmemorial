@@ -19,7 +19,7 @@ export const Body = () => {
                     element: <Memorial/>
                 },
                 {
-                    path:"/addwarrior",
+                    path:"/addwarrior/:war_id",
                     element:<AddWarrior/>
                 }
             ]

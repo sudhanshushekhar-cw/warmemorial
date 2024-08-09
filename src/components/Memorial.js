@@ -35,7 +35,7 @@ export const Memorial = (props) => {
             </div> */}
 
             <div id='memorial-wall'>
-                <Bricks data={data} /> {/* Pass data to Bricks component if needed */}
+                <Bricks data={data} war_id={war_id} /> {/* Pass data to Bricks component if needed */}
             </div>
         </div>
     );

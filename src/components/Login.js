@@ -40,7 +40,7 @@ const Login = () => {
     }
 
     return (
-        <div className="flex justify-center items-center h-screen">
+        <div className="flex justify-center items-center">
             <GoogleButton
                 label='Continue with Google'
                 onClick={signin}

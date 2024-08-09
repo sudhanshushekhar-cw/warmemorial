@@ -3,7 +3,7 @@ import '../css/utils.css';
 import { IoMdAddCircle } from "react-icons/io";
 import { Link } from 'react-router-dom';
 
-export const Bricks = ({ data }) => {
+export const Bricks = ({ data , war_id}) => {
   // Define dummyData
   const dummyData = Array(200).fill().map((_, i) => {
     return {
@@ -34,7 +34,7 @@ export const Bricks = ({ data }) => {
 
   return (
     <div id='bricks'>
-      <Link to="/addwarrior">
+      <Link to={`/addwarrior/${war_id}`}>
         <div className='rounded-lg text-center cursor-pointer h-[100%]' style={{ backgroundColor: "#ffffff78", boxShadow: "none" }} >
           <span className='flex justify-center items-center pt-3 pl-1'>
             <IoMdAddCircle className='text-4xl' />Add Warrior
