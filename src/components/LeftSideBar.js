@@ -37,13 +37,13 @@ const GetSideBar = () => {
 
     fetchData();
   }, []);
-
+  
   return (
     <>
       {
         data.map((war_cat) => (
           <Section
-            key={war_cat.war_category_id}
+            key={war_cat}
             heading={war_cat.name}
             items={war_cat.wars}
           />

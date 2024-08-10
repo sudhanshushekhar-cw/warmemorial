@@ -1,6 +1,6 @@
 import React from 'react'
 import Login from './Login'
-import MultiStepForm from './form/Form'
+import MultiStepForm from './form/MultiStepForm'
 import { useParams } from 'react-router-dom';
 
 export const AddWarrior = (warid) => {

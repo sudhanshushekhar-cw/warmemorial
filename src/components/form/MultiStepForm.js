@@ -3,7 +3,7 @@ import axios from 'axios';
 import PersonalInfo from './OfficerInfo';
 import AccountInfo from './AccountInfo';
 import Confirmation from './Confirmation';
-import ServiceInfo from './SeriveInfo';
+import ServiceInfo from './ServiceInfo';
 import Tribute from './Tribute';
 import { ADD_WARRIOR } from '../../api/api_list';
 
@@ -14,34 +14,29 @@ const MultiStepForm = ({ war_id }) => {
     name: '',
     placeOfBirth: '',
     dateOfBirth: '',
-    martyrDate:'',
+    martyrDate: '',
+
     // serviceInfo:
-    war_id:war_id,
+    war_id: war_id,
     branch: '',
     serviceNumber: '',
     rank: '',
-    regiment:'',
+    regiment: '',
+
     // tribute: 
     bio: '',
-    profilePhoto: null,  // Initially no file is selected
+    profilePhotoFile: null,
+    profilePhotoURL: '/assets/profile.svg',
+    isFamily: false,
   });
 
+  // this function use id to upadate formData so ID must be equal to formData property
   const handleInputChange = (e) => {
-    const { id, value, files } = e.target;
-    console.log(id, value);
-
-    if (files) {
-      // If a file is uploaded
-      setFormData((prevData) => ({
-        ...prevData,
-        [id]: files[0],  // Store the uploaded file
-      }));
-    } else {
-      setFormData((prevData) => ({
-        ...prevData,
-        [id]: value,
-      }));
-    }
+    const { id, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [id]: value,
+    }));
   };
 
   const handleSubmit = async (e) => {
@@ -49,19 +44,24 @@ const MultiStepForm = ({ war_id }) => {
 
     // Create a FormData object to handle the file upload
     const formToSend = new FormData();
-    formToSend.append('name', formData.name);
-    formToSend.append('placeOfBirth', formData.placeOfBirth);
-    formToSend.append('dateOfBirth', formData.dateOfBirth);
-    formToSend.append('martyrDate', formData.martyrDate);
-    formToSend.append('war_id', formData.war_id);
-    formToSend.append('branch', formData.branch);
-    formToSend.append('serviceNumber', formData.serviceNumber);
-    formToSend.append('rank', formData.rank);
-    formToSend.append('regiment', formData.regiment);
-    formToSend.append('bio', formData.bio);
-    if (formData.profilePhoto) {
-      formToSend.append('profilePhoto', formData.profilePhoto);
+    const ignore = new Set([
+      'profilePhotoURL',
+    ]);
+
+    Object.entries(formData).forEach(([key, value]) => {
+      if(!ignore.has(key)){
+        if(key == 'profilePhotoFile'){
+          key = 'profilePhoto'
+        }
+        formToSend.append(key, value);
+      }
+    });
+    const loginData = JSON.parse(localStorage.getItem('loginData'));
+    if(loginData){
+      formToSend.append('email', loginData.email);
+      formToSend.append('user_id', loginData.user_id);
     }
+    
 
     try {
       const response = await axios.post(ADD_WARRIOR, formToSend, {
@@ -100,6 +100,7 @@ const MultiStepForm = ({ war_id }) => {
           {step === 3 && (
             <Tribute
               formData={formData}
+              setFormData={setFormData}
               handleInputChange={handleInputChange}
               setStep={setStep}
             />

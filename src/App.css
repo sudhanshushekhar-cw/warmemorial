@@ -146,6 +146,7 @@
   filter: grayscale(0.3) brightness(90%);
 }
 .brick .sahid-name{
+  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }

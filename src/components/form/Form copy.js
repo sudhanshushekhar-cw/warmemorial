@@ -2,23 +2,23 @@ import React, { useState } from 'react';
 import PersonalInfo from './OfficerInfo';
 import AccountInfo from './AccountInfo'
 import Confirmation from './Confirmation'
-import ServiceInfo from './SeriveInfo';
+import ServiceInfo from './ServiceInfo';
 import Tribute from './Tribute';
 
 
-const MultiStepForm = ({war_id}) => {
+const MultiStepForm = ({ war_id }) => {
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({
     // officerInfo: 
     name: '',
     placeOfBirth: '',
     dateOfBirth: '',
-    martyrDate:'',
+    martyrDate: '',
     // serviceInfo:
     branch: '',
     serviceNumber: '',
     rank: '',
-    regiment:'',
+    regiment: '',
 
     // tribute: 
     bio: '',
@@ -42,40 +42,39 @@ const MultiStepForm = ({war_id}) => {
   return (
     <section className="text-gray-100 relative overflow-hidden" id='form'>
       <form onSubmit={handleSubmit}>
-      <div className='rounded-3xl bg-gray-800 shadow-2xl border border-gray-700 p-8 lg:p-10 mx-auto max-w-[450px]'>
-        {
-          step === 1 &&
-          <PersonalInfo
-            formData={formData}
-            handleInputChange={handleInputChange}
-            setStep={setStep}
-          />
-        }
+        <div className='rounded-3xl bg-gray-800 shadow-2xl border border-gray-700 p-8 lg:p-10 mx-auto max-w-[450px]'>
+          {
+            step === 1 &&
+            <PersonalInfo
+              formData={formData}
+              handleInputChange={handleInputChange}
+              setStep={setStep}
+            />
+          }
 
-        {
-          step === 2 && <ServiceInfo
-            formData={formData}
-            handleInputChange={handleInputChange}
-            setStep={setStep}
-          />
-        }
+          {
+            step === 2 && <ServiceInfo
+              formData={formData}
+              handleInputChange={handleInputChange}
+              setStep={setStep}
+            />
+          }
 
-        {
-          step === 3 && <Tribute
-            formData={formData}
-            handleInputChange={handleInputChange}
-            setStep={setStep}
-          />
-        }
+          {
+            step === 3 && <Tribute
+              formData={formData}
+              handleInputChange={handleInputChange}
+              setStep={setStep}
+            />
+          }
 
-        {
-          step === 4 && <Confirmation
-            formData={formData}
-            setStep={setStep}
-            handleSubmit={handleSubmit}
-          />
-        }
-      </div>
+          {
+            step === 4 && <Confirmation
+              formData={formData}
+              setStep={setStep}
+            />
+          }
+        </div>
       </form>
     </section>
   );

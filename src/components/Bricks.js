@@ -2,6 +2,7 @@ import React from 'react';
 import '../css/utils.css';
 import { IoMdAddCircle } from "react-icons/io";
 import { Link } from 'react-router-dom';
+import {BASE_URL} from '../api/api_list';
 
 export const Bricks = ({ data , war_id}) => {
   // Define dummyData
@@ -50,7 +51,7 @@ export const Bricks = ({ data , war_id}) => {
             </span>
             <span className='sahid-name'>{e.name}</span>
             <div className='sahid-img hidden'>
-              <img className='sahid-img hidden' src='http://localhost:3000/assets/1.jpg' alt="Sahid" height={"100%"} width={'100%'} />
+              <img className='sahid-img hidden' src={`${BASE_URL}/api/uploads/${e.photo}`} alt="Sahid" height={"100%"} width={'100%'} />
             </div>
           </div>
         ))
