@@ -60,8 +60,9 @@ export const LeftSideBar = ({ isSideBar }) => {
 
   const loginData = localStorage.getItem('loginData');
   let photo = '';
+  let email = '';
   if(loginData){
-    photo = JSON.parse(loginData).photo;
+    ({photo, email} = JSON.parse(loginData))
   }
   return (
     <>
@@ -70,7 +71,7 @@ export const LeftSideBar = ({ isSideBar }) => {
           <header>
             <div>
               <h3>War Memorial</h3>
-              <p>Our India</p>
+              <p>{email}</p>
             </div>
             <div className="img-box">
               <img src={photo}></img>
