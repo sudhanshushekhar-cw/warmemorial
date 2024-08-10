@@ -1,21 +1,32 @@
 import { useRef, useState } from "react";
 
-function Tribute({ formData, handleInputChange, setStep }) {
+function Tribute({ formData, setFormData, handleInputChange, setStep }) {
     const fileInputRef = useRef(null);
-
     const uploadImage = (e) => {
         const file = e.target.files[0];
         if (!file) return;
-
+        
         // Directly pass the file object to the handleInputChange function
         handleInputChange({
             target: {
-                id: 'profilePhoto',
-                files: [file], // Ensure it's passed as an array
+                id: 'profilePhotoURL',
+                value: URL.createObjectURL(file),
+            }
+        });
+        handleInputChange({
+            target: {
+                id: 'profilePhotoFile',
+                value: file,
             }
         });
     };
 
+    const toggleCheckbox = (e)=>{
+        setFormData((prevData) => ({
+            ...prevData,
+            isFamily: e.target.checked,
+        }));
+    }
     return (
         <div>
             <h2 className="text-lg font-medium text-gray-300">Step 3: Tribute</h2>
@@ -23,9 +34,10 @@ function Tribute({ formData, handleInputChange, setStep }) {
             <div id='profile' className='flex flex-col items-center'>
                 <div className='upload relative'>
                     <div className='img-box' style={{ width: '150px', objectFit: 'contain' }}>
-                        <img src={formData.profilePhoto ? URL.createObjectURL(formData.profilePhoto) : ''} alt="Profile Preview" />
+                        <img src={formData.profilePhotoURL} alt="Profile Preview" />
                     </div>
                     <button
+                        type="button"
                         className='absolute -bottom-3 left-1/2 transform -translate-x-1/2 w-12 h-12 p-0 rounded-full bg-gray-800 hover:bg-gray-700 border border-gray-600 flex items-center justify-center'
                         title='Change Photo'
                         onClick={() => { fileInputRef.current && fileInputRef.current.click() }}
@@ -35,7 +47,6 @@ function Tribute({ formData, handleInputChange, setStep }) {
 
                     <input
                         type="file"
-                        id="profilePhoto"
                         ref={fileInputRef}
                         accept="image/*"
                         onChange={uploadImage}
@@ -59,8 +70,22 @@ function Tribute({ formData, handleInputChange, setStep }) {
 
             <div className="space-y-2 mt-4">
                 <div className="flex items-center mb-4">
-                    <input id="default-checkbox" name="isFamily" type="checkbox" value="" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                    <label htmlFor="default-checkbox" className="ms-2 text-sm font-medium dark:text-gray-300">Are you a family member?</label>
+                    <input 
+                        className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                        id="isFamily" 
+                        name="isFamily" 
+                        type="checkbox"
+                        checked={formData.isFamily}
+                        onChange={()=>{
+                            handleInputChange({
+                                target:{
+                                    id: 'isFamily',
+                                    value: !formData.isFamily,
+                                }
+                            })
+                        }}
+                    />
+                    <label htmlFor="isFamily" className="ms-2 text-sm font-medium dark:text-gray-300">Are you a family member?</label>
                 </div>
             </div>
 

@@ -41,7 +41,11 @@ menu ul {
 menu ul li {
     padding: 8px 10px;
     cursor: pointer;
-    color: #e7e9f1
+    color: #e7e9f1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    border-radius: 8px;
 }
 
 menu ul li.active,

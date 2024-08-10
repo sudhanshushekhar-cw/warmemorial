@@ -1,4 +1,4 @@
-const Confirmation = ({ formData, setStep, handleSubmit }) => {
+const Confirmation = ({ formData, setStep }) => {
     return (
         <div>
             <h2 className="text-lg font-medium text-gray-300">Step 3: Confirmation</h2>
@@ -19,7 +19,6 @@ const Confirmation = ({ formData, setStep, handleSubmit }) => {
                 </button>
                 <button type="submit"
                     className="rounded-full bg-blue-600 px-8 py-2 h-12 text-sm font-semibold text-white hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 w-full"
-                    // onClick={handleSubmit}
                 >
                     Add Worrior
                 </button>
