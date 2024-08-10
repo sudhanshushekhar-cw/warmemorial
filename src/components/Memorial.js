@@ -25,18 +25,8 @@ export const Memorial = (props) => {
     }, [war_id]); // Dependency array to refetch data if war_id changes
 
     return (
-        <div className="container" id='memorial'>
-            {/* Optional: Uncomment and adjust based on your design */}
-            {/* <div className='flex'>
-                <TfiMenuAlt className='text-3xl mt-4 mx-4 md:hidden' onClick={props.toggelSideBarHandler} />
-                <div className='text-center w-[100%]'>
-                    <div className='text-2xl font-bold m-2 p-2 decoration-4 md:text-3xl'>Kargil War 1999</div>
-                </div>
-            </div> */}
-
-            <div id='memorial-wall'>
-                <Bricks data={data} war_id={war_id} /> {/* Pass data to Bricks component if needed */}
-            </div>
+        <div id='memorial-wall'>
+            <Bricks data={data} war_id={war_id} /> {/* Pass data to Bricks component if needed */}
         </div>
     );
 };

@@ -27,3 +27,48 @@
     height: 100%;
     object-fit: cover;
 }
+
+
+.ham {
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    transition: transform 400ms;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    width: 100%;
+    padding: 0;
+}
+
+.hamburger.active .hamRotate {
+    transform: rotate(45deg);
+}
+
+.hamburger.active .hamRotate180 {
+    transform: rotate(180deg);
+}
+
+.line {
+    fill: none;
+    transition: stroke-dasharray 400ms, stroke-dashoffset 400ms;
+    stroke: #e7e9f1;
+    stroke-width: 8.5;
+    stroke-linecap: round;
+}
+
+.ham1 .top {
+    stroke-dasharray: 40 139;
+}
+
+.ham1 .bottom {
+    stroke-dasharray: 40 180;
+}
+
+.hamburger.active .ham1 .top {
+    stroke-dashoffset: -98px;
+}
+
+.hamburger.active .ham1 .bottom {
+    stroke-dashoffset: -138px;
+}
