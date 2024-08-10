@@ -6,8 +6,8 @@ import Confirmation from './Confirmation';
 import ServiceInfo from './ServiceInfo';
 import Tribute from './Tribute';
 import { ADD_WARRIOR } from '../../api/api_list';
-
-const MultiStepForm = ({ war_id }) => {
+import {signin} from '../../googleSignin';
+const MultiStepForm = ({ war_id, setIsLogin}) => {
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({
     // officerInfo: 
@@ -69,11 +69,23 @@ const MultiStepForm = ({ war_id }) => {
           'Content-Type': 'multipart/form-data',
         },
       });
-      console.log('successfully:', response.data);
+      const data = response.data;
+      console.log('successfully:', data);
       alert('Form submitted successfully');
     } catch (error) {
-      console.error('Error submitting form:', error);
-      alert('Failed to submit form');
+      const {message} = error.response.data;
+      const {status} = error.response;
+
+      // try to re log in 
+      if(status === 404){
+        signin(setIsLogin)
+        .then(()=>{
+          alert('submit again');
+        });
+      }
+
+      console.error(message);
+      alert('Failed to submit form', message);
     }
   };
 
