@@ -11,7 +11,7 @@ export const AddWarrior = (warid) => {
 
   return (
     <div className='w-[100%] h-[100%] overflow-y-auto'>
-      {isLogin && <MultiStepForm war_id={war_id} /> }
+      {isLogin && <MultiStepForm setIsLogin={setIsLogin} war_id={war_id} /> }
       {!isLogin && <Login setIsLogin={setIsLogin} /> }
     </div>
   )
