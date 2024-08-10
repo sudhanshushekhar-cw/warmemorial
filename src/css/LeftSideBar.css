@@ -1,5 +1,4 @@
 menu {
-    min-width: 200px;
     background-color: #1a1d27;
     display: grid;
     grid-template-rows: minmax(60px, auto) 1fr auto;

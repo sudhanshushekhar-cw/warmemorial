@@ -24,10 +24,6 @@ export const Body = () => {
                 }
             ]
         }
-        // {
-        //     path: "/details/:war_id",
-        //     element: <Memorial/>
-        // }
     ])
   return (
     <RouterProvider router={appRouter} />

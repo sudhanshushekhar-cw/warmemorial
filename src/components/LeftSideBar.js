@@ -1,17 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import '../css/LeftSideBar.css';
 import { GET_SIDE_NAV_BAR } from "../api/api_list";
 import { json, Link } from 'react-router-dom';
 import axios from 'axios';
 
-function Section({ heading, items }) {
+function Section({ heading, items, setMenuActive, menuActive }) {
   return (
     <section>
       <h4 className="title">{heading}</h4>
       <ul>
         {items.map((item, index) => (
           <Link to={`/details/${item.war_id}`}>
-            <li key={index}>
+            <li
+              onClick={() => setMenuActive(!menuActive)}
+              key={index}
+            >
               {item.war_name}
             </li>
           </Link>
@@ -21,9 +24,9 @@ function Section({ heading, items }) {
   );
 }
 
-const GetSideBar = () => {
+const GetSideBar = ({ setMenuActive, menuActive }) => {
   const [data, setData] = useState([]);
-  
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -37,13 +40,15 @@ const GetSideBar = () => {
 
     fetchData();
   }, []);
-  
+
   return (
     <>
       {
         data.map((war_cat) => (
           <Section
-            key={war_cat}
+            setMenuActive={setMenuActive}
+            menuActive={menuActive}
+            key={war_cat.war_category_id}
             heading={war_cat.name}
             items={war_cat.wars}
           />
@@ -53,35 +58,28 @@ const GetSideBar = () => {
   );
 };
 
-export const LeftSideBar = ({ isSideBar }) => {
-  const classes = isSideBar ?
-    'w-[70%] z-20 absolute md:w-[23%] md:relative' :
-    'hidden z-10 md:w-[23%] md:block'
-
-  const loginData = localStorage.getItem('loginData');
-  let photo = '';
-  let email = '';
-  if(loginData){
-    ({photo, email} = JSON.parse(loginData))
-  }
+export const LeftSideBar = ({ menuActive, setMenuActive, user }) => {
   return (
     <>
-      <div className={classes}>
-        <menu>
-          <header>
-            <div>
-              <h3>War Memorial</h3>
-              <p>{email}</p>
-            </div>
-            <div className="img-box">
-              <img src={photo}></img>
-            </div>
-          </header>
-          <div id='section-wrapper' className='overflow-y-auto removeScrollBar'>
-            <GetSideBar />
+      <menu
+        className={`${menuActive ? 'active' : ''}`}
+      >
+        <header>
+          <div>
+            <h3>War Memorial</h3>
+            <p>{user.email}</p>
           </div>
-        </menu>
-      </div>
+          <div className="img-box">
+            <img src={user.photo}></img>
+          </div>
+        </header>
+        <div id='section-wrapper' className='overflow-y-auto removeScrollBar'>
+          <GetSideBar
+            setMenuActive={setMenuActive}
+            menuActive={menuActive}
+          />
+        </div>
+      </menu>
     </>
   );
 };

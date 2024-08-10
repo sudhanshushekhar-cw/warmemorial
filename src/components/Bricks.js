@@ -3,6 +3,8 @@ import '../css/utils.css';
 import { IoMdAddCircle } from "react-icons/io";
 import { Link } from 'react-router-dom';
 import {BASE_URL} from '../api/api_list';
+import { isAxiosError } from 'axios';
+import { render } from '@testing-library/react';
 
 export const Bricks = ({ data , war_id}) => {
   // Define dummyData
@@ -24,7 +26,8 @@ export const Bricks = ({ data , war_id}) => {
   });
 
   // Determine the data to use
-  const renderData = (data) ? (data.error ? dummyData : data) : dummyData;
+  const renderData = Array.isArray(data)? data : dummyData;
+  
   //summary
   // if(data){
   //   renderData = (data.error)? dummyData : data;
@@ -32,7 +35,6 @@ export const Bricks = ({ data , war_id}) => {
   // else{
   //   rendarData = dummyData;
   // }
-
   return (
     <div id='bricks'>
       <Link to={`/addwarrior/${war_id}`}>

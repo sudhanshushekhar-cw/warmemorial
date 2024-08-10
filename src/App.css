@@ -62,11 +62,10 @@
   grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
   gap: 10px; 
   background-color: #1a1d27;
-  padding: 5px;
   overflow-y: scroll;
   height:90vh;
-  padding-bottom: 20px;
   box-sizing: border-box;
+  padding: 10px;
 }
  #bricks::-webkit-scrollbar{
   display: none;

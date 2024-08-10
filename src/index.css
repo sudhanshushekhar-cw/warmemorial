@@ -16,8 +16,97 @@ code {
     monospace;
 }
 
-#form{
+body {
+  background-color: #070a14;
+}
+
+#grid-container {
+  max-width: 1240px;
+  margin: auto;
+  height: 100svh;
+  display: grid;
+  grid-template-columns: minmax(240px, 300px) 1fr;
+  gap: 10px;
+}
+
+#form {
   text-align: left;
 }
 
 
+main {
+  display: grid;
+  grid-template-rows: 60px 1fr;
+  gap: 10px;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: #1a1d27;
+  color: #e7e9f1;
+  text-transform: capitalize;
+}
+
+nav ul {
+  display: flex;
+}
+
+nav ul li a {
+  color: #858895;
+  padding: 8px;
+}
+
+nav ul li a:hover {
+  color: #e7e9f1;
+}
+
+nav #brand {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.hamburger {
+  aspect-ratio: 1;
+  width: 32px;
+  display: none;
+}
+.backdrop{
+  width: 100vw;
+  height: 100svh;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 9;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: none;
+}
+
+@media screen and (max-width: 720px) {
+  menu {
+    position: absolute;
+    z-index: 10;
+    width: 300px;
+    left: -300px;
+    transition: .3s ease-in-out;
+  }
+
+  menu.active {
+    box-shadow: 5px 0px 20px rgba(0, 0, 0, 0.7);
+    left: 0;
+  }
+  
+  .backdrop.active{
+    display: block;
+  }
+  #grid-container {
+    grid-template-columns: 1fr;
+  }
+
+  .hamburger {
+    display: block;
+  }
+}
