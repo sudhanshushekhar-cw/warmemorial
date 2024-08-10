@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PersonalInfo from './OfficerInfo';
 import AccountInfo from './AccountInfo'
 import Confirmation from './Confirmation'
-import ServiceInfo from './SeriveInfo';
+import ServiceInfo from './ServiceInfo';
 import Tribute from './Tribute';
 
 

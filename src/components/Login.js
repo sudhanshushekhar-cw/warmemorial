@@ -4,6 +4,7 @@ import { auth } from '../Firebase/firebaseConfig';
 import axios from 'axios';
 import { USER_REGISTER_LOGIN } from "../api/api_list";
 import GoogleButton from 'react-google-button';
+import { json } from 'react-router-dom';
 
 const Login = () => {
 
@@ -25,7 +26,7 @@ const Login = () => {
             try {
                 // Send user information to your personal server
                 const response = await axios.post(USER_REGISTER_LOGIN, userInfo);
-                console.log(response);
+                localStorage.setItem('loginData', JSON.stringify(response.data));
                 
                 // Optionally redirect or show user feedback
                 // e.g., window.location.href = '/home';

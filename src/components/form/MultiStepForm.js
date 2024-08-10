@@ -3,7 +3,7 @@ import axios from 'axios';
 import PersonalInfo from './OfficerInfo';
 import AccountInfo from './AccountInfo';
 import Confirmation from './Confirmation';
-import ServiceInfo from './SeriveInfo';
+import ServiceInfo from './ServiceInfo';
 import Tribute from './Tribute';
 import { ADD_WARRIOR } from '../../api/api_list';
 
@@ -56,6 +56,12 @@ const MultiStepForm = ({ war_id }) => {
         formToSend.append(key, value);
       }
     });
+    const loginData = JSON.parse(localStorage.getItem('loginData'));
+    if(loginData){
+      formToSend.append('email', loginData.email);
+      formToSend.append('user_id', loginData.user_id);
+    }
+    
 
     try {
       const response = await axios.post(ADD_WARRIOR, formToSend, {
